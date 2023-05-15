@@ -73,6 +73,11 @@ namespace Onsdag
                 );
             var temp4 = animalList.Max((katte) => katte.Id);
 
+            Animal aa = new Animal();
+            aa.Id = 1;
+            Console.WriteLine(aa.ToString());
+            string ss = aa.ToString();
+
             // result to console...
             // 1) 1 object, just c.w(temp.age) //ex
             // 2) list<objects> , foreach ....
