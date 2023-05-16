@@ -50,5 +50,12 @@ namespace Onsdag
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();
         }
+        public Animal readShownedInDatabase()
+        {
+            Animal aa = new Animal();
+            // sæt data..
+            aa.Age = 5;
+            return aa;
+        }
     }
 }
