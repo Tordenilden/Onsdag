@@ -130,7 +130,9 @@ namespace Onsdag
                 );
             //call create on Animal
             animal002.create();
-
+            animal002.read(4); // %cw
+            //output fra mit method call
+            Animal buffer = animal002.readById(4);
 
 
         }// do this 5-10 times

@@ -36,6 +36,50 @@ namespace Onsdag
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();
         }
+
+        public void read(int id)
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = $"select * from animal where id = {id}";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            // if there is only 1...
+            reader.Read(); // læs 1 linje fra "table"
+            Age = Convert.ToInt32(reader["age"]);
+            Firstname = reader["Firstname"].ToString();
+            Lastname = reader["Lastname"].ToString();
+            Color = reader[1].ToString();
+            //while (reader.Read()) { }
+        }
+
+        /// <summary>
+        /// hvis I ønsker en liste skal returtype laves om
+        /// derudover skal I returnere en liste af Animal typen
+        /// denne liste skal Defineres inde i metoden.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Animal readById(int id)
+        {
+            //List<Animal> list = new List<Animal>();
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = $"select * from animal where id = {id}";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read(); // læs 1 linje fra "table"
+            Age = Convert.ToInt32(reader["age"]);
+            Firstname = reader["Firstname"].ToString();
+            Lastname = reader["Lastname"].ToString();
+            Color = reader[1].ToString();
+            return this;
+        }
+
+
+
+
+
         //override... method
         public override string ToString()
         {
