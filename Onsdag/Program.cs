@@ -6,6 +6,7 @@ namespace Onsdag
     {
         public static void Main(string[] args)
         {
+
             #region onsdag
             // person1 is an object
             Person person1 = new Person(); // instantiate
@@ -20,6 +21,7 @@ namespace Onsdag
             int tal = 99;
             #endregion onsdag
 
+            #region torsdag
             IPerson person2 = new Person();
             IPerson person3 = new Animal();
 
@@ -35,10 +37,8 @@ namespace Onsdag
 
 
 
-
-
-
-
+            #endregion torsdag
+            #region fredag
 
             //Initializer
             List<Animal> animalList = new List<Animal>()
@@ -99,16 +99,41 @@ namespace Onsdag
 
 
 
+            #endregion fredag
+
+
+            Database database = new Database();
+            //database.createHardcoded();
+
+            //now we want to call the other method.. try it out..
+
+            database.create("insert into animal values('black','','Mr Black','chill',123) ");
+
+            Animal animal001 = new Animal();
+            animal001.Age = 33;
+
+            Animal animal002 = new Animal()
+            {
+                Age = 33,
+                Name = "",
+                Color = "Black",
+                Firstname = "White Lady",
+                Lastname = "Bææroness"
+            };
+
+            // pass an object to Type Database - call create on Database
+            database.create(
+                $"insert into animal values('{animal002.Color}'," +
+                $"'','{animal002.Firstname}','{animal002.Lastname}'," +
+                $"{animal002.Age})"
+
+                );
+            //call create on Animal
+            animal002.create();
 
 
 
-
-
-
-
-
-
-        }
+        }// do this 5-10 times
     }
     /// <summary>
     /// Blueprint // skabelon

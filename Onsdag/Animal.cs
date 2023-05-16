@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,29 @@ namespace Onsdag
         public string Color { get; set; }
         public int Age { get; set; }
         public string Name { get; set; }
+
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+
+
+
+        //public void create()
+        //{
+        //    Console.WriteLine("this is an Animal");
+        //}
+        public string connectionString { get; set; } = @"Server=TEC-8220-LA0025;Database=h1Tutorial001; Trusted_Connection=true; TrustServerCertificate=True ";
+
+
         public void create()
         {
-            Console.WriteLine("this is an Animal");
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            string query = $"insert into animal values('{Color}'," +
+                $"'','{Firstname}','{Lastname}'," +
+                $"{Age})";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
         }
-
         //override... method
         public override string ToString()
         {
@@ -31,6 +50,11 @@ namespace Onsdag
         {
             throw new NotImplementedException();
         }
+
+        //public void create()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
 
